@@ -100,10 +100,10 @@ function normalizeTimeMetrics(value) {
 // carries that fix. On an older pin, whose `output` is already
 // reasoning-inclusive, folding reasoning back in here counts it twice.
 // Tencent Buddy and Cherry Studio chat ledgers also emit independent reasoning.
-const TOKSCALE_DISJOINT_REASONING_CLIENTS = new Set([REASONIX_CLIENT, 'codex', 'droid', 'dsh', 'zcode', 'opencode', 'muse', 'codebuddy', 'workbuddy', 'cherrystudio', 'hermes']);
+const TOKSCALE_DISJOINT_REASONING_CLIENTS = new Set([REASONIX_CLIENT, 'antigravity', 'codex', 'droid', 'dsh', 'zcode', 'opencode', 'muse', 'codebuddy', 'workbuddy', 'cherrystudio', 'hermes']);
 
 function hasDisjointReasoning(client) {
-  return TOKSCALE_DISJOINT_REASONING_CLIENTS.has(String(client).trim().toLowerCase());
+  return TOKSCALE_DISJOINT_REASONING_CLIENTS.has(normalizeTokscaleClientName(client));
 }
 
 function sumTokens(breakdown, client = '') {
